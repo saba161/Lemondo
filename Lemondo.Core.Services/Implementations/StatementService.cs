@@ -1,24 +1,22 @@
-﻿using CRUD_BAL.Interface;
-using CRUD_DAL.Interface;
-using CRUD_DAL.Models;
+﻿using Lemondo.Core.Models.Statements;
+using Lemondo.Core.Repositories;
+using Lemondo.Core.Services.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace CRUD_BAL.Service
+namespace Lemondo.Core.Services.Implementations
 {
-    public class StatementService : IStatement
+    public class StatementService : IStatementService
     {
-        private readonly ICrud<StatementEntity> _statement;
+        private readonly ICrud<Statement> _statement;
 
-        public StatementService(ICrud<StatementEntity> statement)
+        public StatementService(ICrud<Statement> statement)
         {
             _statement = statement;
         }
 
-        public async Task PutStatement(StatementEntity statement)
+        public async Task PutStatement(Statement statement)
         {
             try
             {
@@ -48,12 +46,12 @@ namespace CRUD_BAL.Service
             await _statement.Delete(id);
         }
 
-        public async Task<IEnumerable<StatementEntity>> GetStatements()
+        public async Task<IEnumerable<Statement>> GetStatements()
         {
             return await _statement.GetAll();
         }
 
-        public async Task<StatementEntity> GetStatementById(int id)
+        public async Task<Statement> GetStatementById(int id)
         {
             return await _statement.GetById(id);
         }

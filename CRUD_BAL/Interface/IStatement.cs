@@ -9,9 +9,9 @@ namespace CRUD_BAL.Interface
 {
     public interface IStatement
     {
-        Task<IEnumerable<Statement>> GetStatements();
+        Task<IEnumerable<StatementEntity>> GetStatements();
         Task DeleteStatement(int id);
-        Task PutStatement(Statement statement);
-        Task<Statement> GetStatementById(int id);
+        Task PutStatement(StatementEntity statement);
+        Task<StatementEntity> GetStatementById(int id);
     }
 }

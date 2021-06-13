@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CRUD_DAL.Models
 {
-    public class Statement
+    public class StatementEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

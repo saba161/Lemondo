@@ -1,31 +1,28 @@
-﻿using CRUD_BAL.Interface;
-using CRUD_DAL.Models;
+﻿using Lemondo.Core.Models.Statements;
+using Lemondo.Core.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Lemondo.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]/[action]")]
     public class WeatherForecastController : ControllerBase
     {
         private readonly ILogger<WeatherForecastController> _logger;
-        private readonly IStatement _statement;
+        private readonly IStatementService _statement;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, IStatement statement)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IStatementService statement)
         {
             _statement = statement;
             _logger = logger;
         }
 
         [HttpGet]
-        public async Task<Statement> GetStamenet(int id)
+        public async Task<Statement> GetStamenet()
         {
-            return await _statement.GetStatementById(id);
+            return await _statement.GetStatementById(5);
         }
 
         [HttpPut]

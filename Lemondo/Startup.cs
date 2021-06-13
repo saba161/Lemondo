@@ -1,23 +1,17 @@
-using CRUD_BAL.Interface;
-using CRUD_BAL.Service;
-using CRUD_DAL.Data;
-using CRUD_DAL.Interface;
-using CRUD_DAL.Models;
-using CRUD_DAL.Repository;
+using Lemondo.Core.Models.Statements;
+using Lemondo.Core.Repositories;
+using Lemondo.Core.Services.Implementations;
+using Lemondo.Core.Services.Interfaces;
+using Lemondo.Infrastructure.Repositories;
+using Lemondo.Infrastructure.Store;
+using Lemondo.Infrastructure.Store.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Lemondo
 {
@@ -43,8 +37,9 @@ namespace Lemondo
             });
 
             services.AddTransient<ICrud<Statement>, StatementRepository>();
-            services.AddTransient<IStatement, StatementService>();
-
+            services.AddTransient<IStatementService, StatementService>();
+            services.AddTransient<ISearchSerivce, SearchSerivce>();
+            services.AddTransient<ISearchRepository, SearchRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

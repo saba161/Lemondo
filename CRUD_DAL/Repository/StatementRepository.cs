@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CRUD_DAL.Repository
 {
-    public class StatementRepository : ICrud<Statement>
+    public class StatementRepository : ICrud<StatementEntity>
     {
         private readonly ApplicationDbContext _dbContext;
         public StatementRepository(ApplicationDbContext applicationDbContext)
@@ -18,7 +18,7 @@ namespace CRUD_DAL.Repository
             _dbContext = applicationDbContext;
         }
 
-        public async Task<Statement> Create(Statement _object)
+        public async Task<StatementEntity> Create(StatementEntity _object)
         {
             var statement = await _dbContext.Statements.AddAsync(_object);
             _dbContext.SaveChanges();
@@ -35,19 +35,19 @@ namespace CRUD_DAL.Repository
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Statement>> GetAll()
+        public async Task<IEnumerable<StatementEntity>> GetAll()
         {
             return await _dbContext.Statements.ToListAsync();
         }
 
-        public async Task<Statement> GetById(int Id)
+        public async Task<StatementEntity> GetById(int Id)
         {
             return await _dbContext.Statements
                 .Where(x => x.Id == Id)
                 .FirstOrDefaultAsync();
         }
 
-        public async Task Update(Statement _object)
+        public async Task Update(StatementEntity _object)
         {
             _dbContext.Statements.Update(_object);
             await _dbContext.SaveChangesAsync();

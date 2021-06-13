@@ -1,12 +1,7 @@
-﻿using CRUD_DAL.Models;
+﻿using Lemondo.Infrastructure.Store.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace CRUD_DAL.Data
+namespace Lemondo.Infrastructure.Store
 {
     public class ApplicationDbContext : DbContext
     {

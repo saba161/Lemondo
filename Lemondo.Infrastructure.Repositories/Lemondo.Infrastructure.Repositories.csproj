@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lemondo.Core.Models\Lemondo.Core.Models.csproj" />
+    <ProjectReference Include="..\Lemondo.Core.Repositories\Lemondo.Core.Repositories.csproj" />
+    <ProjectReference Include="..\Lemondo.Infrastructure.Mappers\Lemondo.Infrastructure.Mappers.csproj" />
+    <ProjectReference Include="..\Lemondo.Infrastructure.Store\Lemondo.Infrastructure.Store.csproj" />
+  </ItemGroup>
+
+</Project>
