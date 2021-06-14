@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lemondo.Api", "Lemondo\Lemondo.Api.csproj", "{9F31DF15-7C1E-4529-82EF-9F0BE4071271}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lemondo.Api", "Lemondo.Api\Lemondo.Api.csproj", "{9F31DF15-7C1E-4529-82EF-9F0BE4071271}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lemondo.UI", "Lemondo.UI\Lemondo.UI.csproj", "{FEF1CDDA-CF1D-4A1C-838E-A356155613E5}"
 EndProject
