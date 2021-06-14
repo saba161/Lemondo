@@ -1,11 +1,9 @@
 ﻿using Lemondo.Core.Models.Statements;
+using Lemondo.UI.Extentions;
 using Lemondo.UI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Lemondo.UI.Controllers
@@ -13,29 +11,48 @@ namespace Lemondo.UI.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly HttpClient _client;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IHttpClientFactory factory)
         {
             _logger = logger;
+            _client = factory.CreateClient("api");
         }
 
-        public IActionResult Index()
+
+        [HttpGet]
+        public async Task<IActionResult> Index()
         {
-            List<Statement> list = new List<Statement>()
-            {
-                new Statement("Saba", "hahah", 255),
-                new Statement("Saba2", "hahah2", 255)
-            };
+            var statement = await _client.GetListAsync<Statement>($"api/WeatherForecast/GetAllStatement");
 
-            var res = new HomeViewModels
-            {
-                Statements = list.ToList()
-            };
-
-            return View(res);
+            return View(new HomeViewModels { Statements = statement });
         }
 
-        public IActionResult Details(int id)
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            var statement = await _client.GetAsync<Statement>($"api/WeatherForecast/GetStamenet?id={id}");
+            if (statement == null)
+            {
+                return NotFound();
+            }
+
+            return View(statement);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Search(string name)
+        {
+            var statement = await _client.GetAsync<Statement>($"api/WeatherForecast/SearchByName?name={name}");
+            if (statement == null)
+            {
+                return View(statement);
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Search()
         {
             return View();
         }

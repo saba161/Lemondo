@@ -1,1 +1,11 @@
-﻿
+﻿@model Lemondo.Core.Models.Statements.Statement
+
+<div class="thumbnail">
+    <img alt="@Model.Name" src="@Model.Photo">
+    <div class="caption-full">
+        <h3>
+            <a href="#">@Model.Name</a>
+        </h3>
+        <p>@Model.Description</p>
+    </div>
+</div>

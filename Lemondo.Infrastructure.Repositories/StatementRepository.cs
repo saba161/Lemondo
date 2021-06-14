@@ -43,9 +43,10 @@ namespace Lemondo.Infrastructure.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<StatementEntity>> GetAll()
+        public async Task<IEnumerable<Statement>> GetAll()
         {
-            return await _dbContext.Statements.ToListAsync();
+            var statements = await _dbContext.Statements.ToListAsync();
+            return statements.AsDomain();
         }
 
         public async Task<Statement> GetById(int Id)
@@ -66,11 +67,6 @@ namespace Lemondo.Infrastructure.Repositories
             statement.Photo = _object.Photo;
 
             await _dbContext.SaveChangesAsync();
-        }
-
-        Task<IEnumerable<Statement>> ICrud<Statement>.GetAll()
-        {
-            throw new NotImplementedException();
         }
     }
 }

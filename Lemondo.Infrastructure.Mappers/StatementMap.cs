@@ -15,10 +15,21 @@ namespace Lemondo.Infrastructure.Mappers
             Statement domainObject = null;
             if (entity != null)
             {
-                domainObject = new Statement(entity.Name, entity.Description, entity.Photo);
+                domainObject = new Statement(entity.Id, entity.Name, entity.Description, entity.Photo);
             }
 
             return domainObject;
+        }
+        public static List<Statement> AsDomain(this List<StatementEntity> entities)
+        {
+            List<Statement> statements = new List<Statement>();
+
+            foreach (StatementEntity entity in entities)
+            {
+                statements.Add(entity.AsDomain());
+            };
+
+            return statements;
         }
         public static StatementEntity AsEntity(this Statement domainModel)
         {

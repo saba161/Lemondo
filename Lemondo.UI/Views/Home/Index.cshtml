@@ -1,18 +1,18 @@
 ﻿@model Lemondo.UI.Models.HomeViewModels
 
-@foreach (var pie in Model.Statements)
+@foreach (var statemenet in Model.Statements)
 {
     <div class="col-sm-4 col-lg-4 col-md-4">
         <div class="thumbnail">
-            @*<img src="@pie.ImageThumbnailUrl" alt="">*@
+            <img src="@statemenet.Photo" alt="">
             <div class="caption">
-                <h3 class="pull-right">@pie.Name</h3>
+                <h3 class="pull-right">@statemenet.Id</h3>
+                <h3 class="pull-right">@statemenet.Name</h3>
                 <h3>
-                    <a asp-controller="Home" asp-action="Details" asp-route-id="@pie.Id">@pie.Name</a>
+                    <a asp-controller="Home" asp-action="Details" asp-route-id="@statemenet.Id">@statemenet.Name</a>
                 </h3>
-                <p>@pie.Description</p>
+                <p>@statemenet.Description</p>
             </div>
         </div>
     </div>
-
 }

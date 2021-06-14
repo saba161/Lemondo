@@ -2,6 +2,7 @@
 using Lemondo.Core.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Lemondo.Controllers
@@ -20,13 +21,13 @@ namespace Lemondo.Controllers
         }
 
         [HttpGet]
-        public async Task<Statement> GetStamenet()
+        public async Task<Statement> GetStamenet(int id)
         {
-            return await _statement.GetStatementById(5);
+            return await _statement.GetStatementById(id);
         }
 
         [HttpPut]
-        public async Task AddStatement([FromBody] Statement statement)
+        public async Task PutStatement([FromBody] Statement statement)
         {
             await _statement.PutStatement(statement);
         }
@@ -37,10 +38,10 @@ namespace Lemondo.Controllers
             await _statement.DeleteStatement(id);
         }
 
-        //[HttpGet]
-        //public async Task<IEnumerable<Statement>> GetAllStatement()
-        //{
-        //    return await _statement.GetStatements();
-        //}
+        [HttpGet]
+        public async Task<IEnumerable<Statement>> GetAllStatement()
+        {
+            return await _statement.GetStatements();
+        }
     }
 }

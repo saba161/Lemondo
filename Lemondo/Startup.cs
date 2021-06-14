@@ -29,7 +29,7 @@ namespace Lemondo
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("Lemondo.Api")));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

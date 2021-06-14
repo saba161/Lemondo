@@ -15,5 +15,13 @@ namespace Lemondo.UI.Extentions
             var data = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<List<T>>(data);
         }
+
+        public static async Task<T> GetAsync<T>(this HttpClient _client, string url)
+        {
+            var response = await _client.GetAsync(url);
+            if (!response.IsSuccessStatusCode) throw new Exception("todo make normalize error");
+            var data = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<T>(data);
+        }
     }
 }

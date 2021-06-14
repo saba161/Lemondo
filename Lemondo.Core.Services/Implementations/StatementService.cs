@@ -37,7 +37,7 @@ namespace Lemondo.Core.Services.Implementations
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 
